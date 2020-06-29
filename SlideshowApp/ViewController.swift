@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     var timer: Timer!
     var imagedisplayNO = 0
     var imagenameArray = ["1","2","3","4","5"]
-
+    
     func imagedisp(){
         let name = imagenameArray[imagedisplayNO]
         let image = UIImage(named: name)
@@ -49,12 +49,12 @@ class ViewController: UIViewController {
     }
     @objc func updatetimer(_ timer: Timer){
         if imagedisplayNO < imagenameArray.count - 1{
-                 imagedisplayNO += 1
-                 imagedisp()
-             }else{
-                 imagedisplayNO = 0
-                 imagedisp()
-             }
+            imagedisplayNO += 1
+            imagedisp()
+        }else{
+            imagedisplayNO = 0
+            imagedisp()
+        }
     }
     
     @IBAction func switchButtonTap(_ sender: Any) {
@@ -75,22 +75,35 @@ class ViewController: UIViewController {
             
             switchButton.setTitle("再生", for: .normal)
         }
-      
+        
+    }
+    
+    @IBAction func tapAction(_ sender: Any) {
+        if timer != nil{
+            timer.invalidate()
+            timer = nil
         }
+    }
+    
+    
     @IBAction func unwind(_ segue: UIStoryboardSegue){
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let newViewController:NewViewController = segue.destination as! NewViewController
         
-       let name = imagenameArray[imagedisplayNO]
-             let image = UIImage(named: name)
+        let name = imagenameArray[imagedisplayNO]
+        let image = UIImage(named: name)
         newViewController.Zoomdisp = image
         
         
     }
-    
+ 
+            
     }
     
+
+
+
 
 
 
