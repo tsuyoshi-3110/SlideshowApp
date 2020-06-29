@@ -78,13 +78,6 @@ class ViewController: UIViewController {
         
     }
     
-    @IBAction func tapAction(_ sender: Any) {
-        if timer != nil{
-            timer.invalidate()
-            timer = nil
-        }
-    }
-    
     
     @IBAction func unwind(_ segue: UIStoryboardSegue){
     }
@@ -95,12 +88,18 @@ class ViewController: UIViewController {
         let image = UIImage(named: name)
         newViewController.Zoomdisp = image
         
+        if timer != nil{
+            timer.invalidate()
+            timer = nil
+            
+            nextButton.isEnabled = true
+            backButton.isEnabled = true
+            
+            switchButton.setTitle("再生", for: .normal)    }
+        
         
     }
- 
-            
-    }
-    
+}
 
 
 
